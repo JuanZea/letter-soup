@@ -9,6 +9,22 @@ export const showResponse = (input, content) => {
   const findingsTB = findTB(inline, input);
   const findingsBT = findBT(inline, input);
 
+  for(let i = 0; i < findingsLR.length; i++) {
+    for(let j = 0; j < findingsRL.length; j++) {
+      if (findingsLR[i].column + (input.length - 1) === findingsRL[j].column) {
+        findingsRL.splice(j, 1);
+      }
+    }
+  }
+
+  for(let i = 0; i < findingsTB.length; i++) {
+    for(let j = 0; j < findingsBT.length; j++) {
+      if (findingsTB[i].row + (input.length - 1) === findingsBT[j].row) {
+        findingsBT.splice(j, 1);
+      }
+    }
+  }
+
   const findings = [...findingsLR, ...findingsRL, ...findingsTB, ...findingsBT];
 
   if (findings.length > 0) {

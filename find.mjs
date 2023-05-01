@@ -4,7 +4,7 @@ export const findLR = (inline, input) => {
   let x = 0;
 
   for (let i = 0; i < inline.length; i++) {
-    if (input[x] !== inline[i]) x = 0;
+    if (input[x] !== inline[i] || Math.floor(i / dimension) !== Math.floor((i + 1) / dimension)) x = 0;
     if (input[x] === inline[i]) {
       x++;
       if (x === input.length) {
@@ -28,7 +28,7 @@ export const findRL = (inline, input) => {
   let x = 0;
 
   for (let i = inline.length - 1; i >= 0; i--) {
-    if (input[x] !== inline[i]) x = 0;
+    if (input[x] !== inline[i] || Math.floor(i / dimension) !== Math.floor((i - 1) / dimension)) x = 0;
     if (input[x] === inline[i]) {
       x++;
       if (x === input.length) {
@@ -52,6 +52,7 @@ export const findTB = (inline, input) => {
   let x = 0;
 
   for (let j = 0; j < dimension; j++) {
+    x = 0;
     for (let i = 0; i < dimension; i++) {
       if (input[x] !== inline[j + i * dimension]) x = 0;
       if (input[x] === inline[j + i * dimension]) {
@@ -78,6 +79,7 @@ export const findBT = (inline, input) => {
   let x = 0;
 
   for (let j = 0; j < dimension; j++) {
+    x = 0;
     for (let i = dimension - 1; i >= 0; i--) {
       if (input[x] !== inline[j + i * dimension]) x = 0;
       if (input[x] === inline[j + i * dimension]) {

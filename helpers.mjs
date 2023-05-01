@@ -1,1 +1,1 @@
-export const getInlineContent = (content) => content.replaceAll('\n', '').replaceAll(' ', '');
+export const getInlineContent = (content) => content.replaceAll(/\n|\s/g, '');
