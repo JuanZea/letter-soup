@@ -1,0 +1,1 @@
+export const getInlineContent = (content) => content.replaceAll('\n', '').replaceAll(' ', '');
